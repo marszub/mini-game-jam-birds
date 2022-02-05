@@ -6,6 +6,7 @@ public class DragAndDrop : MonoBehaviour
     private Vector3 dragOffset;
     private Camera cam;
 
+    [SerializeField] private GameObject bird;
     [SerializeField] private float speed = 100;
 
     void Awake()
@@ -15,12 +16,13 @@ public class DragAndDrop : MonoBehaviour
 
     void OnMouseDown()
     {
-        dragOffset = transform.position - GetMousePos();
+        dragOffset = bird.transform.position - GetMousePos();
     }
 
     void OnMouseDrag()
     {
-        transform.position = Vector3.MoveTowards(transform.position, GetMousePos() + dragOffset, speed * Time.deltaTime);
+        Debug.Log("Mouse Drag");
+        bird.transform.position = Vector3.MoveTowards(bird.transform.position, GetMousePos() + dragOffset, speed * Time.deltaTime);
     }
 
     Vector3 GetMousePos()
