@@ -22,10 +22,13 @@ public class BGController : MonoBehaviour
 
     //for distance
     private float distance = 0;
+    public float birdSpawnDistance = 0;//how often a new bird will spawn
+    private float tmpBirdDistance = 0;
 
     //for random junk
     private float timer = 0;
     private float waitTime = 0;
+    public float despawn_distance = -100;
     public List<GameObject> stuff;
 
     private List<GameObject> stuffInMotion = new List<GameObject>();
@@ -59,6 +62,8 @@ public class BGController : MonoBehaviour
 
         }
         distance += BG_velocity * Time.deltaTime;
+        tmpBirdDistance += BG_velocity * Time.deltaTime;
+
         timer += Time.deltaTime;
         if(timer > waitTime)
         {
@@ -66,17 +71,31 @@ public class BGController : MonoBehaviour
             waitTime = Random.Range(0, 1.0f);
             SpawnDecoration();
         }
-        if((int)distance %100==0)
+        if(tmpBirdDistance > birdSpawnDistance)
         {
             Debug.Log("Bird");
-            //spawn bird -> need fixing
-            //possibly 101>distance>99, or other variable to get to spawn bird each 100m (like timer)
+            Debug.Log(distance);
+            tmpBirdDistance = 0;
+
         }
+        Despawn_stuff();
+
+        
 
 
-        Debug.Log(distance);
+    }
 
+    void Despawn_stuff()
+    {
+        for (int i = 0; i < stuffInMotion.Count; i++)
+        {
+           if(stuffInMotion[i].transform.position.x < despawn_distance)
+            {
+                Destroy(stuffInMotion[i]);
+                stuffInMotion.RemoveAt(i);
 
+            }
+        }
     }
 
     void Update_velocity()
