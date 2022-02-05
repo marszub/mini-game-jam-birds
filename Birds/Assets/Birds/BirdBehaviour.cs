@@ -32,7 +32,8 @@ public class BirdBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Buff buff)
-            && !activeBuffs.Contains(buff))
+            && !activeBuffs.Contains(buff)
+            && buff.transform.parent.gameObject != gameObject)
         {
             activeBuffs.Add(buff);
         }
