@@ -4,12 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Bird
+  - Buff
   - Decoration
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Fade
   - Water
   - UI
   - 
@@ -41,4 +43,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1213983217
+    locked: 0
+  - name: Birds
+    uniqueID: 3186718857
+    locked: 0
+  - name: UI
+    uniqueID: 2317066429
+    locked: 0
+  - name: Fade
+    uniqueID: 3015671503
     locked: 0

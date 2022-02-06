@@ -73,16 +73,10 @@ public class BGController : MonoBehaviour
         }
         if(tmpBirdDistance > birdSpawnDistance)
         {
-            Debug.Log("Bird");
-            Debug.Log(distance);
             tmpBirdDistance = 0;
 
         }
         Despawn_stuff();
-
-        
-
-
     }
 
     void Despawn_stuff()
@@ -111,7 +105,6 @@ public class BGController : MonoBehaviour
     public void Set_Velocity(float velocity)
     {
         BG_velocity = velocity;
-        
     }
 
     public float Get_Distance()
