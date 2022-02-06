@@ -21,8 +21,8 @@ public class DragAndDrop : MonoBehaviour
 
     void OnMouseDrag()
     {
-        Debug.Log("Mouse Drag");
-        bird.transform.position = Vector3.MoveTowards(bird.transform.position, GetMousePos() + dragOffset, speed * Time.deltaTime);
+        if (enabled)
+            bird.transform.position = Vector3.MoveTowards(bird.transform.position, GetMousePos() + dragOffset, speed * Time.deltaTime);
     }
 
     Vector3 GetMousePos()

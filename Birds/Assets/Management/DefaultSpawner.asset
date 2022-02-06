@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DefaultSpawner
   m_EditorClassIdentifier: 
   scoreOne: 20
-  scoreMultiplier: 1.1
+  scoreMultiplier: 1.01
   birdPrefabs:
   - {fileID: 5443485767061697648, guid: c80e8415d637d594b8db6fc8639db14a, type: 3}

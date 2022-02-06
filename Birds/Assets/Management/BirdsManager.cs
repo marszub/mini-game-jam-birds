@@ -5,27 +5,42 @@ using UnityEngine;
 public class BirdsManager : MonoBehaviour
 {
     [SerializeField] private Spawner spawner;
+    [SerializeField] private BGController bgController;
+    [SerializeField] private LevelChanger levelChanger;
     private List<GameObject> birds = new List<GameObject>();
     private float lastBirdScore;
-    private float score;
+    private static float score;
     [SerializeField] private Transform spawnAreaBot;
     [SerializeField] private Transform spawnAreaTop;
+    private bool playing = true;
 
+    public static float Score { get => score; }
 
     void Start()
     {
-        lastBirdScore = 0;
+        lastBirdScore = -1;
         score = 0;
-        List<GameObject> toSpawn = spawner.GetBirds(-1, 0);
-        foreach (GameObject prefab in toSpawn)
-        {
-            Spawn(prefab);
-        }
     }
 
     void Update()
     {
-        // TODO: end when no birds
+        if (!playing)
+            return;
+
+        List<GameObject> toSpawn = spawner.GetBirds(lastBirdScore, score);
+        if (toSpawn.Count > 0)
+        {
+            lastBirdScore = score;
+            foreach (GameObject prefab in toSpawn)
+                Spawn(prefab);
+        }
+
+        if(birds.Count == 0)
+        {
+            levelChanger.FadeToScene("EndScreen");
+            playing = false;
+            return;
+        }
         GameObject frontBird = birds[0];
         foreach(GameObject bird in birds)
         {
@@ -47,26 +62,16 @@ public class BirdsManager : MonoBehaviour
         foreach (GameObject bird in toDestroy)
         {
             birds.Remove(bird);
-            Destroy(bird);
+            StartCoroutine(bird.GetComponent<BirdBehaviour>().Die());
         }
 
-
+        bgController.Set_Velocity(speed);
         score += Time.deltaTime * speed;
-
-
-        List<GameObject> toSpawn = spawner.GetBirds(lastBirdScore, score);
-        if(toSpawn.Count > 0)
-        {
-            lastBirdScore = score;
-            foreach (GameObject prefab in toSpawn)
-                Spawn(prefab);
-        }
-        
     }
 
     private void Spawn(GameObject bird)
     {
-        Vector2 position = new Vector2(Random.Range(spawnAreaBot.position.x, spawnAreaTop.position.x), Random.Range(spawnAreaBot.position.y, spawnAreaTop.position.y));
+        Vector2 position = new Vector3(Random.Range(spawnAreaBot.position.x, spawnAreaTop.position.x), Random.Range(spawnAreaBot.position.y, spawnAreaTop.position.y), 1);
         GameObject spawned = Instantiate(bird, position, Quaternion.identity);
         birds.Add(spawned);
     }
