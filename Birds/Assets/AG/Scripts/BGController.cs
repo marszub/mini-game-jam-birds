@@ -114,6 +114,8 @@ public class BGController : MonoBehaviour
 
     void SpawnDecoration()
     {
+        if (stuff.Count == 0)
+            return;
         int index = Random.Range(0, stuff.Count);
         GameObject tmp = Instantiate(stuff[index]) as GameObject;
         tmp.transform.position = new Vector3(mainCamera.transform.position.x + 2 * halfBack, (mainCamera.transform.position.x+2*halfHeight) * Random.Range(0, 1.0f), 0);

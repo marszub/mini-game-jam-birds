@@ -48,7 +48,7 @@ public class BirdsManager : MonoBehaviour
         GameObject frontBird = birds[0];
         foreach(GameObject bird in birds)
         {
-            if(frontBird.transform.position.x < bird.transform.position.x)
+            if(bird.GetComponent<BirdBehaviour>().state == BirdBehaviour.State.Fly && frontBird.transform.position.x < bird.transform.position.x)
                 frontBird = bird;
         }
         float speed = frontBird.GetComponent<BirdBehaviour>().OptimalSpeed;
