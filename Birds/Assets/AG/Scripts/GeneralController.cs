@@ -7,6 +7,8 @@ public class GeneralController : MonoBehaviour
 
     public float tmp_bg_velocity = 0;
     public BGController back;
+    public Text_control text;
+    public float distance = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +18,6 @@ public class GeneralController : MonoBehaviour
     void Update()
     {
         back.Set_Velocity(tmp_bg_velocity);
+        text.Set_Distance(distance);
     }
 }
