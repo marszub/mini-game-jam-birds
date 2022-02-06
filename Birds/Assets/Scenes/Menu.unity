@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -16.1, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -20, y: 0}
+  m_SizeDelta: {x: 40, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55014672
 MonoBehaviour:
@@ -182,11 +182,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 53
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -236,10 +236,10 @@ RectTransform:
   m_Father: {fileID: 923960316}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000047684, y: 0}
-  m_SizeDelta: {x: 185.7661, y: 164.6861}
+  m_AnchorMin: {x: 0.41, y: 0.35}
+  m_AnchorMax: {x: 0.59, y: 0.65}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &466521479
 MonoBehaviour:
@@ -285,16 +285,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 923960312}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 1
+      - m_Target: {fileID: 1277956141}
+        m_TargetAssemblyTypeName: LevelChanger, Assembly-CSharp
+        m_MethodName: FadeToScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Game
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &466521480
@@ -413,7 +413,6 @@ GameObject:
   - component: {fileID: 923960315}
   - component: {fileID: 923960314}
   - component: {fileID: 923960313}
-  - component: {fileID: 923960312}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -421,18 +420,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &923960312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923960311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aed7c7c865371084e8063266331efe7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &923960313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +502,74 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &1277956140
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3241677255771326433, guid: 3498b950246ef3a428bd480bdaf12de1, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241677255771326433, guid: 3498b950246ef3a428bd480bdaf12de1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241677255771326433, guid: 3498b950246ef3a428bd480bdaf12de1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241677255771326433, guid: 3498b950246ef3a428bd480bdaf12de1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241677255771326433, guid: 3498b950246ef3a428bd480bdaf12de1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241677255771326433, guid: 3498b950246ef3a428bd480bdaf12de1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241677255771326433, guid: 3498b950246ef3a428bd480bdaf12de1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241677255771326433, guid: 3498b950246ef3a428bd480bdaf12de1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241677255771326433, guid: 3498b950246ef3a428bd480bdaf12de1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241677255771326433, guid: 3498b950246ef3a428bd480bdaf12de1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241677255771326433, guid: 3498b950246ef3a428bd480bdaf12de1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3241677255771326436, guid: 3498b950246ef3a428bd480bdaf12de1, type: 3}
+      propertyPath: m_Name
+      value: Level changer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3498b950246ef3a428bd480bdaf12de1, type: 3}
+--- !u!114 &1277956141 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3241677255771326439, guid: 3498b950246ef3a428bd480bdaf12de1, type: 3}
+  m_PrefabInstance: {fileID: 1277956140}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae21501f9f2d0646be1cc31aa24f17b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2049887614
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,9 +686,9 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -44.467712, y: -180}
-  m_SizeDelta: {x: -88.9354, y: -360}
+  m_AnchorMax: {x: 1, y: 0.28280514}
+  m_AnchoredPosition: {x: 5.000002, y: 5}
+  m_SizeDelta: {x: -10.000004, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2114393670
 MonoBehaviour:
@@ -657,18 +712,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 186
     m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Credits: Marcin Szubert, \u0141ukasz Szubert, Antoni Gradowski, Karolina
+  m_Text: "Credits: \nMarcin Szubert\n\u0141ukasz Szubert\nAntoni Gradowski\nKarolina
     Janicka"
 --- !u!222 &2114393671
 CanvasRenderer:

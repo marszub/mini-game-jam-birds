@@ -12,14 +12,8 @@ public class Text_control : MonoBehaviour
         dst = GetComponent<Text>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Set_Distance(float distance)
     {
-        dst.text = "Distance: " + distance;
+        dst.text = "Distance: " + (int)distance + " m";
     }
 }

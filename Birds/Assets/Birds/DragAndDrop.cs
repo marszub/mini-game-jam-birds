@@ -16,12 +16,19 @@ public class DragAndDrop : MonoBehaviour
 
     void OnMouseDown()
     {
-        dragOffset = bird.transform.position - GetMousePos();
+        BirdBehaviour birdBehaviour = bird.GetComponent<BirdBehaviour>();
+        if(birdBehaviour.state != BirdBehaviour.State.Dead)
+        {
+            dragOffset = bird.transform.position - GetMousePos();
+            if(birdBehaviour.state == BirdBehaviour.State.Join)
+                birdBehaviour.state = BirdBehaviour.State.Fly;
+        }
+            
     }
 
     void OnMouseDrag()
     {
-        if (enabled)
+        if (bird.GetComponent<BirdBehaviour>().state != BirdBehaviour.State.Dead)
             bird.transform.position = Vector3.MoveTowards(bird.transform.position, GetMousePos() + dragOffset, speed * Time.deltaTime);
     }
 

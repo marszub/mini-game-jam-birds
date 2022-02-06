@@ -7,11 +7,15 @@ public class BirdsManager : MonoBehaviour
     [SerializeField] private Spawner spawner;
     [SerializeField] private BGController bgController;
     [SerializeField] private LevelChanger levelChanger;
+    [SerializeField] private Text_control scoreDisplay;
     private List<GameObject> birds = new List<GameObject>();
     private float lastBirdScore;
     private static float score;
     [SerializeField] private Transform spawnAreaBot;
     [SerializeField] private Transform spawnAreaTop;
+    [SerializeField] private Transform joinAreaBot;
+    [SerializeField] private Transform joinAreaTop;
+    [SerializeField] private float joinSpeed;
     private bool playing = true;
 
     public static float Score { get => score; }
@@ -65,14 +69,17 @@ public class BirdsManager : MonoBehaviour
             StartCoroutine(bird.GetComponent<BirdBehaviour>().Die());
         }
 
-        bgController.Set_Velocity(speed);
+        bgController.Set_Velocity(speed/4);
         score += Time.deltaTime * speed;
+        scoreDisplay.Set_Distance(score);
     }
 
     private void Spawn(GameObject bird)
     {
-        Vector2 position = new Vector3(Random.Range(spawnAreaBot.position.x, spawnAreaTop.position.x), Random.Range(spawnAreaBot.position.y, spawnAreaTop.position.y), 1);
+        Vector2 position = new Vector3(spawnAreaTop.position.x, Random.Range(spawnAreaBot.position.y, spawnAreaTop.position.y), 0);
         GameObject spawned = Instantiate(bird, position, Quaternion.identity);
+        float joinPlace = Random.Range(joinAreaBot.position.x, joinAreaTop.position.x);
+        StartCoroutine(spawned.GetComponent<BirdBehaviour>().Join(-joinSpeed, joinPlace));
         birds.Add(spawned);
     }
 }

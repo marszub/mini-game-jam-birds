@@ -736,13 +736,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f2154b2b98e1f48b3cbd28e654dbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnergy: 5
+  maxEnergy: 20
   optimalSpeed: 5
   energyBuffFromSpeed: 1
   energyNerfFromSpeed: 2
   speedNeutralZone: 0.1
   bars: {fileID: 8730580972451517578}
   destroyDistance: -20
+  state: 0
 --- !u!70 &166243990559899192
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -13,7 +13,13 @@ public class BirdBehaviour : MonoBehaviour
     [SerializeField] private float destroyDistance;
     private float energy;
     private float speed;
-    private bool dead;
+    public enum State
+    {
+        Join,
+        Fly,
+        Dead
+    }
+    public State state;
 
     private SpriteRenderer spriteRenderer;
     private List<Buff> activeBuffs = new List<Buff>();
@@ -23,7 +29,7 @@ public class BirdBehaviour : MonoBehaviour
 
     private void Start()
     {
-        dead = false;
+        state = State.Join;
         spriteRenderer = GetComponent<SpriteRenderer>();
         energy = maxEnergy;
         bars.updateEnergy(1);
@@ -35,8 +41,13 @@ public class BirdBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (dead)
+        if (state == State.Dead)
             return;
+
+        if(state == State.Join)
+        {
+            return;
+        }
 
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         energy -= CalculateEnergyBuffs(Time.deltaTime);
@@ -113,15 +124,29 @@ public class BirdBehaviour : MonoBehaviour
 
     public IEnumerator Die()
     {
-        dead = true;
-        transform.Find("Drag zone").gameObject.GetComponent<DragAndDrop>().enabled = false;
+        state = State.Dead;
         gameObject.GetComponent<Animator>().SetTrigger("Die");
         bars.gameObject.SetActive(false);
-        while(transform.position.x > -100)
+        while(transform.position.x > destroyDistance)
         {
             gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.left * speed / 2;
             yield return new WaitForSeconds(.1f);
         }
         Destroy(gameObject);
+    }
+
+    public IEnumerator Join(float velocity, float endPoint)
+    {
+        while((velocity > 0 && transform.position.x < endPoint)
+            || (velocity < 0 && transform.position.x > endPoint))
+        {
+            if (state != State.Join)
+                break;
+            GetComponent<Rigidbody2D>().velocity = Vector2.right * velocity;
+            yield return null;
+        }
+
+        if (state != State.Dead)
+            state = State.Fly;
     }
 }
